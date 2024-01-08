@@ -1,0 +1,17 @@
+{
+    "name": "youcode/wikizone",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        }
+    },
+    "authors": [
+        {
+            "name": "ibtissam",
+            "email": "ibtissamelhani36@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
