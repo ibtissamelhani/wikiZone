@@ -32,8 +32,7 @@ CREATE TABLE tags (
 CREATE TABLE wikis (
     id int PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255),
-    description VARCHAR(255),
-    content VARCHAR(255),
+    content VARCHAR(5000),
     date date  DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(50),
     photo VARCHAR(255),
