@@ -13,7 +13,8 @@ $router = new Router();
 $router->setRoutes([
     'GET' => [
         '' => ['UserController','home'],
-        'test' => ['UserController','home'],
+        'home' => ['UserController','home'],
+        'signup' => ['UserController','signup'],
 
     ],
     'POST' => [

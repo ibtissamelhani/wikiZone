@@ -12,7 +12,6 @@ class Wiki
     private $photo;
     private $author_id;
     private $category_id;
-    private $tag_id;
 
     public function __construct($id,$title ,$content,$status,$photo,$author_id,$category_id,$tag_id){
         $this->id = $id;
@@ -48,9 +47,7 @@ class Wiki
     public function getCategoryId(){
         return $this->category_id;
     }
-    public function getTagId(){
-        return $this->tag_id;
-    }
+  
 
     public function setId($id){
         $this->id = $id;
@@ -61,9 +58,7 @@ class Wiki
     public function setContent($content){
         $this->content = $content;
     }
-    public function setTagId($tag_id){
-        $this->tag_id = $tag_id;
-    }
+  
     public function setCategoryId($category_id){
         $this->category_id = $category_id;
     }

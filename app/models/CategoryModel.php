@@ -31,7 +31,7 @@ class CategoryModel {
     }
 
     public function getCategories(){
-        $query = $this->conn->query("SELECT * from categories");
+        $query = $this->db->query("SELECT * from categories");
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
         $categories = [];
         if(empty($rows)){

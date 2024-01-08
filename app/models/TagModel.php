@@ -32,7 +32,7 @@ class TagModel {
     }
 
     public function getTags(){
-        $query = $this->conn->query("SELECT * from tags");
+        $query = $this->db->query("SELECT * from tags");
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
         $tags = [];
         if(empty($rows)){

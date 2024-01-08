@@ -40,7 +40,7 @@ class UserModel {
     }
 
     public function getAllUsers(){
-        $query = $this->conn->query("SELECT * from users");
+        $query = $this->db->query("SELECT * from users");
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
         $users = [];
         if(empty($rows)){
