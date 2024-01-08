@@ -41,7 +41,6 @@ class Connection
         }
 }
 
-$db = Connection::getInstence()->getConnect();
 
 ?>
 

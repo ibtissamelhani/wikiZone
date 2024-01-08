@@ -26,9 +26,7 @@ CREATE TABLE categories (
 
 CREATE TABLE tags (
     id int PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50),
-    category_id int,
-    Foreign Key (category_id) REFERENCES categories(id) ON DELETE CASCADE ON UPDATE CASCADE
+    name VARCHAR(50)
 );
 
 CREATE TABLE wikis (
@@ -40,8 +38,11 @@ CREATE TABLE wikis (
     status VARCHAR(50),
     photo VARCHAR(255),
     writer int ,
-    Foreign Key (writer) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
-); 
+    Foreign Key (writer) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    category_id int,
+    Foreign Key (category_id) REFERENCES categories(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
 
 CREATE TABLE wiki_tags (
     wiki_id int,
