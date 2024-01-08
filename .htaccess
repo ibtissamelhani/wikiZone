@@ -1,11 +1,12 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # DirectoryIndex app/router/app.php
     # Exclude specific directories from the rewrite
     RewriteRule ^(?:Public/(?:js|css|imgs)/) - [L]
 
     # Rewrite all other requests to app/routes/RouteHandler.php?url=<request>
     # RewriteCond %{REQUEST_FILENAME} !-f
     # RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ app/routes/app.php?url=$1 [QSA,L]
+    RewriteRule ^(.*)$ app/router/app.php?url=$1 [QSA,L]
 </IfModule>

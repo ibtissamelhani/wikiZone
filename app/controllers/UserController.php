@@ -8,6 +8,10 @@ use app\entities\User;
 session_start();
 class UserController 
 {
+
+    public function home(){
+        require "../../views/user/home.php";
+    }
     public function createUser(){
 
         $this->validation($f_name,$l_name,$email,$password,$r_password);

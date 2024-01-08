@@ -4,7 +4,7 @@
 require_once '../../vendor/autoload.php';
 
 // Importer la classe Router du namespace App\routes
-use app\routes\Router;
+use app\router\Router;
 
 // Créer une instance du routeur
 $router = new Router();
@@ -12,7 +12,8 @@ $router = new Router();
 // Définir les routes associées aux méthodes HTTP GET et POST
 $router->setRoutes([
     'GET' => [
-        '' => ['HomeController', 'index'],
+        '' => ['UserController','home'],
+        'test' => ['UserController','home'],
 
     ],
     'POST' => [
@@ -40,7 +41,7 @@ if (isset($_GET['url'])) {
             list($controllerName, $methodName) = $route;
 
             // Construire le nom complet de la classe du contrôleur
-            $controllerClass = 'app\\controller\\' . ucfirst($controllerName);
+            $controllerClass = 'app\\controllers\\' . ucfirst($controllerName);
 
             // Instancier le contrôleur
             $controller = new $controllerClass();
