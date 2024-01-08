@@ -2,12 +2,12 @@
 
 namespace app\controllers;
 require_once __DIR__ . '/../../vendor/autoload.php';
-use app\models\CategoryModel;
-use app\entities\Category;
+use app\models\TagModel;
+use app\entities\tag;
 
 session_start();
 
-class CategoryController 
+class TagController 
 {
     public function add(){
 
@@ -21,16 +21,16 @@ class CategoryController
             $_SESSION['error_name'] = "";
         }
         if(empty($_SESSION['error_name'])){
-            $categoryModel = new CategoryModel();
-            $category = new Category(null,$name);
-            $categoryModel->create($category);
+            $tagModel = new TagModel();
+            $tag = new Tag(null,$name);
+            $tagModel->create($tag);
         }
         // header('location:../category');
     }
 
     public function getAll(){
-        $category= new CategoryModel();
-        $categories= $category->getCategories();
+        $tag= new TagModel();
+        $tags= $tag->getTags();
         // require_once '../../views/admin/category.php';
     }
 
@@ -46,10 +46,10 @@ class CategoryController
         // } else {
         //     $_SESSION['error_name'] = "";
         // }
-        $categoryModel= new CategoryModel();
-        $category = new Category($id,$name);
+        $tagModel= new TagModel();
+        $tag = new Tag($id,$name);
 
-        $categoryModel->update($category);
+        $tagModel->update($tag);
       
         // header('location:../category');
         
@@ -57,16 +57,16 @@ class CategoryController
 
     public function delete(){
         $id=$_GET["id"];
-        $categoryModel= new CategoryModel();
-        $categoryModel->delete($id);
+        $tagModel= new TagModel();
+        $tagModel->delete($id);
         // header('location:../category');
     }
 
-    public function getCategory()
+    public function getTag()
     {
         $id=$_GET['id'];
-        $categoryModel = new CategoryModel();
-        $cat = $categoryModel->getCategoryById($id);
+        $tagModel = new TagModel();
+        $tag = $tagModel->getTagById($id);
         // require_once '../../views/admin/categoryEdit.php';
     }
 

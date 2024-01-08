@@ -3,9 +3,9 @@
 namespace app\models;
 require_once __DIR__ . '/../../vendor/autoload.php';
 use app\database\Connection;
-use app\entities\Category;
+use app\entities\Tag;
 
-class CategoryModel {
+class TagModel {
 
     private $db;
 
@@ -13,47 +13,48 @@ class CategoryModel {
         $this->db = Connection::getInstence()->getConnect();
     }
 
-    public function create(Category $category){
-        $stmt= $this->db->prepare("INSERT INTO categories (name) 
+    public function create(Tag $tag){
+        $stmt= $this->db->prepare("INSERT INTO tags (name) 
         VALUES (:name)");
-        $stmt->bindParam(':name', $category->getName());
+        $stmt->bindParam(':name', $tag->getName());
         $stmt->execute();
     }
 
-    public function update(Category $category){
-        $stmt= $this->db->prepare("UPDATE categories 
+    public function update(Tag $tag){
+
+        $stmt= $this->db->prepare("UPDATE tags 
         SET name = :name
         where id = :id"); 
-        $stmt->bindParam(':id', $category->getId());
-        $stmt->bindParam(':name', $category->getName());
+        $stmt->bindParam(':id', $tag->getId());
+        $stmt->bindParam(':name', $tag->getName());
 
         $stmt->execute();
     }
 
-    public function getCategories(){
-        $query = $this->conn->query("SELECT * from categories");
+    public function getTags(){
+        $query = $this->conn->query("SELECT * from tags");
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-        $categories = [];
+        $tags = [];
         if(empty($rows)){
             return [];
         }else{
             foreach($rows as $row){
-                $category = new Category($row['id'],$row['name']);
-                $categories[] = $category;
+                $tag = new Tag($row['id'],$row['name']);
+                $tags[] = $tag;
             }
-            return $categories;
+            return $tags;
         }
     }
 
     public function delete($id){
-        $query = "DELETE from categories where id=:id";
+        $query = "DELETE from tags where id=:id";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
     }
 
-    public function getCategoryById($id){
-        $query ="SELECT * from categories where id=?";
+    public function getTagById($id){
+        $query ="SELECT * from tags where id=?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$id]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
