@@ -10,14 +10,16 @@ class User
     private $email;
     private $password;
     private $profile;
+    private $role_id;
 
-    public function __construct($id, $firstName,$lastName,$email,$password,$profile){
+    public function __construct($id, $firstName,$lastName,$email,$password,$profile,$role_id){
         $this->id = $id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
         $this->password = $password;
         $this->profile = $profile;
+        $this->role_id = $role_id;
     }
 
 
@@ -39,6 +41,9 @@ class User
     public function getProfile(){
         return $this->profile;
     }
+    public function getRoleId(){
+        return $this->role_id;
+    }
 
     public function setId($id){
         $this->id = $id;
@@ -57,6 +62,9 @@ class User
     }
     public function setProfile($profile){
         $this->profile = $profile;
+    }
+    public function setRoleId($role_id){
+        $this->role_id = $role_id;
     }
 
 }
