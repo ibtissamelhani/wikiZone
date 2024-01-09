@@ -15,13 +15,13 @@ class UserModel {
 
     public function create(User $user){
         $stmt= $this->db->prepare("INSERT INTO users (firstName,lastName,email,password,profile,role_id ) 
-        VALUES (:firstName,:lastName,:email,:password,:profile,:role_id");
-        $stmt->bindParam(':firstName', $user->getFirstName());
-        $stmt->bindParam(':lastName', $user->getLastName());
-        $stmt->bindParam(':email', $user->getEmail());
-        $stmt->bindParam(':password', $user->getPassword());
-        $stmt->bindParam(':profile', $user->getProfile());
-        $stmt->bindParam(':role_id', 2);
+        VALUES (:firstName,:lastName,:email,:password,:profile,:role_id)");
+        $stmt->bindValue(':firstName', $user->getFirstName());
+        $stmt->bindValue(':lastName', $user->getLastName());
+        $stmt->bindValue(':email', $user->getEmail());
+        $stmt->bindValue(':password', $user->getPassword());
+        $stmt->bindValue(':profile', $user->getProfile());
+        $stmt->bindValue(':role_id', 2);
         $stmt->execute();
     }
 

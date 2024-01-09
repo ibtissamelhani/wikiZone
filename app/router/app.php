@@ -19,7 +19,7 @@ $router->setRoutes([
 
     ],
     'POST' => [
-        
+        'register' => ['UserController','createUser'],
 
 
     ]

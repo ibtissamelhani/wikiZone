@@ -24,7 +24,7 @@ class Connection
             $dbname = $_ENV['DB_NAME'];
             try{
                 $this->connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                echo "done";
+                
             }catch (PDOException $e) {
                 die("Connection failed: " . $e->getMessage());
             } 
