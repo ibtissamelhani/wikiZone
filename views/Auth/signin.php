@@ -11,11 +11,11 @@
 </head>
 <body>
 <div class="min-w-screen min-h-screen bg-[#222]  flex items-center justify-center px-5 py-5 bg-cover bg-center" style="background-image: url('/wikizone/public/imgs/1.jpg');">
-    <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
+    <div class=" rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
         <div class="md:flex w-full">
-            <div class="md:flex flex-col items-center justify-center gap-4 md:block w-1/2 bg-[#333] py-10 px-10 ">
+            <div class="md:flex flex-col items-center justify-center gap-4 md:block w-1/2 bg-[#333] bg-opacity-80 py-10 px-10 ">
                 <h1 class="font-bold text-5xl text-orange-700 mb-4 ">Welcome Back, Writer!</h1>
-                <p class=" text-xl text-slate-300 mb-4">We're thrilled to see you again on WikiZone! Your dedication to sharing knowledge and contributing valuable insights makes our community truly exceptional</p>
+                <p class="text-lg text-slate-300 mb-4">We're thrilled to see you again on WikiZone! Your dedication to sharing knowledge and contributing valuable insights makes our community truly exceptional</p>
                 <a href="home" class="text-orange-700 hover:text-orange-400 hover:transition-transform transform hover:-translate-x-1  flex gap-2 ">
                     <svg class="w-6 h-6  dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
@@ -23,7 +23,7 @@
                         back to home
                 </a>
             </div>
-            <div class="w-full md:w-1/2 py-10 px-5 md:px-10">
+            <div class="bg-white w-full md:w-1/2 py-10 px-5 md:px-10">
                 <div class="text-center mb-10 ">
                     <h1 class="font-bold text-3xl text-gray-900">LOGIN</h1>
                     <p>Enter your information to login</p>
