@@ -17,6 +17,10 @@ $router->setRoutes([
         'signup' => ['UserController','signup'],
         'signin' => ['UserController','login'],
         'dashboard' => ['AdminController','dashboard'],
+        'users' => ['AdminController','users'],
+        'categories' => ['AdminController','categories'],
+        'tags' => ['AdminController','tags'],
+        'wikis' => ['AdminController','wikis'],
 
     ],
     'POST' => [
