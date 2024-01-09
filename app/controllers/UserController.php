@@ -16,6 +16,9 @@ class UserController
     public function signup(){
         require "../../views/Auth/signup.php";
     }
+    public function login(){
+        require "../../views/Auth/signin.php";
+    }
 
     public function createUser(){
 
