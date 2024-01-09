@@ -16,6 +16,7 @@ $router->setRoutes([
         'home' => ['UserController','home'],
         'signup' => ['UserController','signup'],
         'signin' => ['UserController','login'],
+        'dashboard' => ['AdminController','dashboard'],
 
     ],
     'POST' => [
