@@ -34,7 +34,7 @@ class UserController
         $result = $userModel->create($user); 
 
         if (!$result) {
-            header("location: login");
+            header("location: signin");
         } else {
             header("location: signup");
         }
@@ -54,9 +54,12 @@ class UserController
 
     public function getUserByEmail(){
 
-            $userModel = new UserModel();
-            $row = $userModel->getUserByEmail($email);
-            if($row) {
+        $email = $this->validation($_POST['email']);
+        $password = $this->validation($_POST['password']);
+        
+        $userModel = new UserModel();
+        $row = $userModel->getUserByEmail($email);
+        if($row) {
 
                     if(password_verify($password, $row['password'])){
                             $_SESSION['userId'] = $row['id'];
@@ -64,14 +67,14 @@ class UserController
                             $_SESSION['role_id'] =$row['role_id'];
 
                             if($row['role_id'] === 1){
-                                header("location:../../views/admin/dashboard.php");
+                                header("location: home");
                             }else{
-                                header("location../../views/user/home.php");
+                                header("location: home");
                             } 
                     }
             }else {
                 $_SESSION['message'] = "this email doesn't existe";
-                header("location: ../../views/Auth/login.php");
+                header("location: signin");
             }
         
     }

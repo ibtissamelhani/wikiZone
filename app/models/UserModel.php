@@ -4,6 +4,7 @@ namespace app\models;
 require_once __DIR__ . '/../../vendor/autoload.php';
 use app\database\Connection;
 use app\entities\User;
+use PDO;
 
 class UserModel {
 
@@ -78,7 +79,7 @@ class UserModel {
         $stmt->bindParam(':email', $email);
       
         $stmt->execute();
-        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row;
 
         }
