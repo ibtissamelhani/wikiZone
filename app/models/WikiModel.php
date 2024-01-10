@@ -4,6 +4,7 @@ namespace app\models;
 require_once __DIR__ . '/../../vendor/autoload.php';
 use app\database\Connection;
 use app\entities\Wiki;
+use PDO;
 
 
 class WikiModel 
@@ -42,19 +43,22 @@ class WikiModel
 
 
     public function getAllWikis(){
-        $query = $this->db->query("SELECT * from wikis");
+        $query = $this->db->query("SELECT w.*,u.firstName as firstName, u.lastName as lastName, c.name from wikis w 
+        join users u on u.id = w.writer
+        join categories c on c.id = w.category_id
+        where not w.status='archive' ");
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-        $wikis = [];
-        if(empty($rows)){
-            return [];
-        }else{
-            foreach($rows as $row){
-                $wiki = new Wiki($row['title'],$row['content'],$row['status'],$row['photo'],$row['writer'],$row['category_id']);
-                $wikis[] = $wiki;
-            }
-            return $wikis;
-        }
+        return $rows;
     }
+    public function getAllArchive(){
+        $query = $this->db->query("SELECT w.*,u.firstName as firstName, u.lastName as lastName, c.name from wikis w 
+        join users u on u.id = w.writer
+        join categories c on c.id = w.category_id
+        where w.status='archive' ");
+        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+
     public function delete($id){
         $query = "DELETE from wikis where id=:id";
         $stmt = $this->db->prepare($query);

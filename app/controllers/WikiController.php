@@ -21,6 +21,13 @@ class WikiController
     public function getAll(){
         $wiki= new WikiModel();
         $wikis= $wiki->getAllWikis();
+        require "../../views/admin/wikis.php";
+    }
+
+    public function getArchive(){
+        $wiki= new WikiModel();
+        $wikis= $wiki->getAllArchive();
+        require "../../views/admin/Archive.php";
     }
 
     public function update(){

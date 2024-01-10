@@ -94,6 +94,15 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Tags</span>
                     </a>
                 </li>
+                <li>
+                    <a href="archive"
+                        class="flex items-center p-2 text-orange-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <span class="material-symbols-outlined">
+                            move_to_inbox
+                        </span>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Archive</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="#"
@@ -107,5 +116,3 @@
             </ul>
         </div>
     </aside>
-
-

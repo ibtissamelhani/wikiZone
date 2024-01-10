@@ -22,7 +22,9 @@ $router->setRoutes([
         
 
 
-        'wikis' => ['AdminController','wikis'],
+        'wikis' => ['WikiController','getAll'],
+        'archive' => ['WikiController','getArchive'],
+        
 
         'tags' => ['TagController','getAll'],
         'deleteTag' => ['TagController','delete'],

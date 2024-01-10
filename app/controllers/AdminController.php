@@ -15,8 +15,6 @@ class AdminController
     public function categories(){
         require "../../views/admin/categories.php";
     }
-    public function wikis(){
-        require "../../views/admin/wikis.php";
-    }
+    
    
 }
