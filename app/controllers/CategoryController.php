@@ -11,27 +11,26 @@ class CategoryController
 {
     public function add(){
 
-        $name=$_POST['name'];
+        $name=$this->validation($_POST['name']);
 
-        if (empty($name)) {
-            $_SESSION['error_name'] = "Name category is required";
-        } elseif (strlen($name) < 3) {
-            $_SESSION['error_name'] = "Name must be at least 3 characters";
-        } else {
-            $_SESSION['error_name'] = "";
-        }
-        if(empty($_SESSION['error_name'])){
+       
             $categoryModel = new CategoryModel();
             $category = new Category(null,$name);
             $categoryModel->create($category);
-        }
-        // header('location:../category');
+        
+         header('location: categories');
     }
 
+    function validation($input) {
+        $input = trim($input);
+        $input = stripslashes($input);
+        $input = htmlspecialchars($input);
+        return $input;
+      }
     public function getAll(){
         $category= new CategoryModel();
         $categories= $category->getCategories();
-        // require_once '../../views/admin/category.php';
+        require "../../views/admin/categories.php";
     }
 
     public function update(){

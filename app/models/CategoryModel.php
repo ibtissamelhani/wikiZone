@@ -4,6 +4,7 @@ namespace app\models;
 require_once __DIR__ . '/../../vendor/autoload.php';
 use app\database\Connection;
 use app\entities\Category;
+use PDO;
 
 class CategoryModel {
 
@@ -31,18 +32,10 @@ class CategoryModel {
     }
 
     public function getCategories(){
-        $query = $this->db->query("SELECT * from categories");
-        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-        $categories = [];
-        if(empty($rows)){
-            return [];
-        }else{
-            foreach($rows as $row){
-                $category = new Category($row['id'],$row['name']);
-                $categories[] = $category;
-            }
-            return $categories;
-        }
+        $stmt = $this->db->prepare("SELECT * from categories");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $result;
     }
 
     public function delete($id){

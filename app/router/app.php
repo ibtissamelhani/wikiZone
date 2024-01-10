@@ -18,7 +18,10 @@ $router->setRoutes([
         'signin' => ['UserController','login'],
         'dashboard' => ['AdminController','dashboard'],
         
-        'categories' => ['AdminController','categories'],
+        'categories' => ['CategoryController','getAll'],
+        
+
+
         'wikis' => ['AdminController','wikis'],
 
         'tags' => ['TagController','getAll'],
@@ -32,9 +35,10 @@ $router->setRoutes([
     'POST' => [
         'register' => ['UserController','createUser'],
         'login' => ['UserController','getUserByEmail'],
-        'addTag' => ['TagController','add'],
-        'editTag' => ['TagController','getTag'],
 
+        'addTag' => ['TagController','add'],
+
+        'addCat' => ['CategoryController','add'],
     ]
 ]);
 
