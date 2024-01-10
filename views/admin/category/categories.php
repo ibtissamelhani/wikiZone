@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/../includes/navbarAdmin.php"
+require_once __DIR__ . "/../../includes/navbarAdmin.php"
 
 ?>
 <div class="p-4 sm:ml-64">

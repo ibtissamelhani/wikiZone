@@ -21,13 +21,19 @@ class WikiController
     public function getAll(){
         $wiki= new WikiModel();
         $wikis= $wiki->getAllWikis();
-        require "../../views/admin/wikis.php";
+        require "../../views/admin/wiki/wikis.php";
     }
 
     public function getArchive(){
         $wiki= new WikiModel();
         $wikis= $wiki->getAllArchive();
-        require "../../views/admin/Archive.php";
+        require "../../views/admin/wiki/Archive.php";
+    }
+
+    public function getPending(){
+        $wiki= new WikiModel();
+        $wikis= $wiki->getAllPending();
+        require "../../views/admin/dashboard.php";
     }
 
     public function update(){
@@ -52,7 +58,8 @@ class WikiController
     {
         $id=$_GET['id'];
         $wikiModel = new WikiModel();
-        $wiki = $wikiModel->getUserById($id);
+        $wiki = $wikiModel->getWikiById($id);
+        require "../../views/admin/wiki/details.php";
     }
 
     

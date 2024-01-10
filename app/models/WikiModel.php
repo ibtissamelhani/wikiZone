@@ -43,18 +43,26 @@ class WikiModel
 
 
     public function getAllWikis(){
-        $query = $this->db->query("SELECT w.*,u.firstName as firstName, u.lastName as lastName, c.name from wikis w 
+        $query = $this->db->query("SELECT w.*,u.firstName as firstName, u.lastName as lastName, c.name as category from wikis w 
         join users u on u.id = w.writer
         join categories c on c.id = w.category_id
-        where not w.status='archive' ");
+        where not w.status='Archived' ");
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
     public function getAllArchive(){
-        $query = $this->db->query("SELECT w.*,u.firstName as firstName, u.lastName as lastName, c.name from wikis w 
+        $query = $this->db->query("SELECT w.*,u.firstName as firstName, u.lastName as lastName, c.name as category from wikis w 
         join users u on u.id = w.writer
         join categories c on c.id = w.category_id
-        where w.status='archive' ");
+        where w.status='Archived' ");
+        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+    public function getAllPending(){
+        $query = $this->db->query("SELECT w.*,u.firstName as firstName, u.lastName as lastName, c.name as category from wikis w 
+        join users u on u.id = w.writer
+        join categories c on c.id = w.category_id
+        where w.status='Pending' ");
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
@@ -66,8 +74,11 @@ class WikiModel
         $stmt->execute();
     }
 
-    public function getUserById($id){
-        $query ="SELECT * from wikis where id=?";
+    public function getWikiById($id){
+        $query ="SELECT w.*,u.firstName as firstName, u.lastName as lastName,u.profile as profile, c.name as category from wikis w 
+        join users u on u.id = w.writer
+        join categories c on c.id = w.category_id
+        where w.id=?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$id]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);

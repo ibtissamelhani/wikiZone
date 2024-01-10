@@ -30,7 +30,7 @@ class TagController
     public function getAll(){
         $tag= new TagModel();
         $tags= $tag->getTags();
-        require "../../views/admin/tags.php";
+        require "../../views/admin/tag/tags.php";
     }
 
     public function update(){

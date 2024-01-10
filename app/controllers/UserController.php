@@ -67,7 +67,7 @@ class UserController
                             $_SESSION['role_id'] =$row['role_id'];
 
                             if($row['role_id'] === 1){
-                                header("location: home");
+                                header("location: dashboard");
                             }else{
                                 header("location: home");
                             } 
@@ -96,7 +96,7 @@ class UserController
     public function getUsers(){
         $userModel = new UserModel();
         $users = $userModel->getAllUsers();
-        require "../../views/admin/users.php";
+        require "../../views/admin/user/users.php";
     }
 
     public function getUserById(){

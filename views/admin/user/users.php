@@ -1,54 +1,53 @@
 <?php
 
-require_once __DIR__ . "/../includes/navbarAdmin.php"
+require_once __DIR__ . "/../../includes/navbarAdmin.php"
 
 ?>
 <div class="p-4 sm:ml-64">
     <div class=" flex flex-col gap-8 p-10 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-        <h1>Wikis</h1>
+        <h1>users</h1>
         <table class="w-9/12 m-auto sm:rounded-md text-sm text-left rtl:text-right bg-neutral-200 dark:text-gray-400">
             <thead
                 class="text-xs sm:rounded-md text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        title
+                        full name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        writer
+                        email
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        date
+                        role
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        status
+                        profile
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        action
+                        <span class="sr-only">Edit</span>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($wikis as $wiki){ ?>
+                <?php foreach($users as $user){ ?>
                 <tr
                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <?= $wiki['title']?>
+                        <?php echo $user['firstName']." ".$user['lastName']?>
                     </th>
                     <td class="px-6 py-4">
-                        <?= $wiki['firstName']." ".$wiki['lastName']?>
+                    <?= $user['email']?>
                     </td>
                     <td class="px-6 py-4">
-                        <?= $wiki['date']?>
+                    <?= $user['role']?>
                     </td>
-                    <td class="px-6 py-4 ">
-                    <button type="button" class="text-white font-medium rounded-full text-sm px-2 py-2.5 over:bg-gray-700 <?php if($wiki['status']==="aproved") {echo "bg-green-700";}else{ echo "bg-yellow-500";}  ?>"><?= $wiki['status']?></button>
+                    <td class="px-6 py-4">
+                        <img src="/wikizone/public/imgs/2.jpg" alt="user profile" class="rounded-full w-8 h-8">
                     </td>
                     <td class="px-6 py-4 text-right">
-                        <a href="deleteUser?id=<?= $user['id']?>"
-                            class="text-white p-2 px-4 rounded bg-red-600 hover: bg-red-400">Archive</a>
+                        <a href="deleteUser?id=<?= $user['id']?>" class="text-white p-2 px-4 rounded bg-red-600 hover: bg-red-400">Delete</a>
                     </td>
                 </tr>
-
+            
                 <?php } ?>
             </tbody>
         </table>

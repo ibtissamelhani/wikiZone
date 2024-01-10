@@ -30,7 +30,7 @@ class CategoryController
     public function getAll(){
         $category= new CategoryModel();
         $categories= $category->getCategories();
-        require "../../views/admin/categories.php";
+        require "../../views/admin/category/categories.php";
     }
 
     public function update(){

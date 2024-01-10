@@ -37,85 +37,65 @@ require_once __DIR__ . "/../includes/navbarAdmin.php"
             </a>
 
         </div>
+        <span class="text-2xl text-center underline decoration-dotted font-bold text-yellow-500">Pending Wikis</span>
+        <table class="w-9/12 m-auto sm:rounded-md text-sm text-left rtl:text-right bg-neutral-200 dark:text-gray-400">
+            <thead
+                class="text-xs sm:rounded-md text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        #
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        title
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        writter
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        date
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        category
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        status
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($wikis as $wiki) {?>
+                <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <?= $wiki['id']?>
+                    </th>
+                    <td class="px-6 py-4">
+                        <?= $wiki['title']?>
+                    </td>
+                    <td class="px-6 py-4">
+                        <?= $wiki['firstName']." ".$wiki['lastName']?>
+                    </td>
+                    <td class="px-6 py-4">
+                        <?= $wiki['date']?>
+                    </td>
+                    <td class="px-6 py-4">
+                        <?= $wiki['category']?>
+                    </td>
+                    <td class="px-6 py-4 text-yellow-500 ">
+                        <?= $wiki['status']?>
+                    </td>
+                    <td class=" flex gap-4 px-6 py-4 text-right">
+                        <a href="seeMore?id=<?= $wiki['id']?>" class="font-medium rounded-full text-sm px-4 py-2.5 hover:bg-green-700 bg-green-500 ">See</a>
+                        <a href="publish?id=<?= $wiki['id']?>" class="font-medium rounded-full text-sm px-2 py-2.5 hover:bg-orange-700 bg-orange-500 ">Publish</a>
+                    </td>
+                </tr>
+                <?php }?>
+            </tbody>
+        </table>
 
-
-            <table class="w-full sm:rounded-md text-sm text-left rtl:text-right bg-neutral-200 dark:text-gray-400">
-                <thead class="text-xs sm:rounded-md text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Product name
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Color
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Category
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Price
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            <span class="sr-only">Edit</span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
-                        </th>
-                        <td class="px-6 py-4">
-                            Silver
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td class="px-6 py-4">
-                            $2999
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Microsoft Surface Pro
-                        </th>
-                        <td class="px-6 py-4">
-                            White
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop PC
-                        </td>
-                        <td class="px-6 py-4">
-                            $1999
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Magic Mouse 2
-                        </th>
-                        <td class="px-6 py-4">
-                            Black
-                        </td>
-                        <td class="px-6 py-4">
-                            Accessories
-                        </td>
-                        <td class="px-6 py-4">
-                            $99
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        
 
     </div>
 </div>
