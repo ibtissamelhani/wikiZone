@@ -1,3 +1,17 @@
+<?php 
+session_start();
+
+if(!$_SESSION['loggedIn']){
+    header("location: signin");
+}elseif($row['role_id'] !== 1){
+   echo "<script>alert(\"only admin can acces  \")</script>";
+   header("location: signin");
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

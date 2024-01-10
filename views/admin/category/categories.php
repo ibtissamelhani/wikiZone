@@ -93,9 +93,6 @@ require_once __DIR__ . "/../../includes/navbarAdmin.php"
                         <?= $cat->name?>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="editCat?id=<?= $cat->id?>" class="p-2 px-4 mx-2 rounded bg-green-500">  
-                        Edit  
-                        </a>
                         <a href="deleteCat?id=<?= $cat->id?>" class="p-2 px-4 rounded bg-red-500">Delete</a>
                     </td>
 

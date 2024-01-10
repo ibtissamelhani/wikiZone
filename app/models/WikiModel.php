@@ -84,4 +84,27 @@ class WikiModel
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row;
     }
+
+    public function publishWiki($id){
+        $stmt= $this->db->prepare("UPDATE wikis 
+        SET status='Published'
+        where id = :id"); 
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
+
+    public function archiveWiki($id){
+        $stmt= $this->db->prepare("UPDATE wikis 
+        SET status='Archived'
+        where id = :id"); 
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
+
+    public function countWiki(){
+        $sql="SELECT COUNT(*) as num_users from wikis";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        }
 }

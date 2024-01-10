@@ -9,31 +9,47 @@ require_once __DIR__ . "/../includes/navbarAdmin.php"
 
             <a href="#"
                 class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div class="flex gap-4 items-center">
+                    <span class="material-symbols-outlined text-4xl text-orange-700">
+                        history_edu
+                    </span>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Number of writers : </p>
+                </div>
 
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
                     acquisitions 2021</h5>
-                <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
-                    acquisitions of 2021 so far, in reverse chronological order.</p>
+
             </a>
 
 
             <a href="#"
                 class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div class="flex gap-4 items-center">
+                    <span class="material-symbols-outlined text-4xl text-orange-700">
+                            description
+                        </span>
+                    </span>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Number of Wikis : </p>
+                </div>
 
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
                     acquisitions 2021</h5>
-                <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
-                    acquisitions of 2021 so far, in reverse chronological order.</p>
+
             </a>
 
 
             <a href="#"
                 class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div class="flex gap-4 items-center">
+                    <span class="material-symbols-outlined text-4xl text-orange-700">
+                        category
+                    </span>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Number of categories : </p>
+                </div>
 
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
                     acquisitions 2021</h5>
-                <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
-                    acquisitions of 2021 so far, in reverse chronological order.</p>
+
             </a>
 
         </div>
@@ -88,8 +104,10 @@ require_once __DIR__ . "/../includes/navbarAdmin.php"
                         <?= $wiki['status']?>
                     </td>
                     <td class=" flex gap-4 px-6 py-4 text-right">
-                        <a href="seeMore?id=<?= $wiki['id']?>" class="font-medium rounded-full text-sm px-4 py-2.5 hover:bg-green-700 bg-green-500 ">See</a>
-                        <a href="publish?id=<?= $wiki['id']?>" class="font-medium rounded-full text-sm px-2 py-2.5 hover:bg-orange-700 bg-orange-500 ">Publish</a>
+                        <a href="seeMore?id=<?= $wiki['id']?>"
+                            class="font-medium rounded-full text-sm px-4 py-2.5 hover:bg-green-700 bg-green-500 ">See</a>
+                        <a href="publish?id=<?= $wiki['id']?>"
+                            class="font-medium rounded-full text-sm px-2 py-2.5 hover:bg-orange-700 bg-orange-500 ">Publish</a>
                     </td>
                 </tr>
                 <?php }?>

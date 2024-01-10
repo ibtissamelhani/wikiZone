@@ -61,6 +61,20 @@ class WikiController
         $wiki = $wikiModel->getWikiById($id);
         require "../../views/admin/wiki/details.php";
     }
+    public function publish()
+    {
+        $id=$_GET['id'];
+        $wikiModel = new WikiModel();
+        $wiki = $wikiModel->publishWiki($id);
+        header("location: archive");
+    }
+    public function archive()
+    {
+        $id=$_GET['id'];
+        $wikiModel = new WikiModel();
+        $wiki = $wikiModel->archiveWiki($id);
+        header("location: archive");
+    }
 
     
 

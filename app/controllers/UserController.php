@@ -103,6 +103,13 @@ class UserController
         $userModel = new UserModel();
         $user = $userModel->getUserById($id);
     }
+
+    public function logout(){
+        
+        session_destroy();
+        header("location: home");
+        }
+    
     
 
 }

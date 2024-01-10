@@ -93,8 +93,6 @@ require_once __DIR__ . "/../../includes/navbarAdmin.php"
                         <?= $tag->name?>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="editTag?id=<?= $tag->id?>">    
-                        </a>
                         <a href="deleteTag?id=<?= $tag->id?>" class="p-2 px-4 rounded bg-red-500">Delete</a>
                     </td>
 

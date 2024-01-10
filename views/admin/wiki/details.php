@@ -26,8 +26,8 @@ require_once __DIR__ . "/../../includes/navbarAdmin.php"
             <p><?= $wiki['content']?></p>
         </div>
         <div class="flex gap-4">
-            <a href="" class="text-white p-2 px-4 rounded bg-green-600 hover: bg-green-400">Publish</a>
-            <a href="" class="text-white p-2 px-4 rounded bg-red-600 hover: bg-red-400">Archive</a>
+            <a href="publish?id=<?= $wiki['id']?>" class="text-white p-2 px-4 rounded bg-green-600 hover: bg-green-400">Publish</a>
+            <a href="archiveWiki?id=<?= $wiki['id']?>" class="text-white p-2 px-4 rounded bg-red-600 hover: bg-red-400">Archive</a>
         </div>
 
     </div>

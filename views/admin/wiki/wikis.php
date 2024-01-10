@@ -6,7 +6,7 @@ require_once __DIR__ . "/../../includes/navbarAdmin.php"
 <div class="p-4 sm:ml-64">
     <div class=" flex flex-col gap-8 p-10 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         <h1>Wikis</h1>
-        <table class="w-9/12 m-auto sm:rounded-md text-sm text-left rtl:text-right bg-neutral-200 dark:text-gray-400">
+        <table class="w-full  sm:rounded-md text-sm text-left rtl:text-right bg-neutral-200 dark:text-gray-400">
             <thead
                 class="text-xs sm:rounded-md text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -44,7 +44,7 @@ require_once __DIR__ . "/../../includes/navbarAdmin.php"
                     <button type="button" class="text-white font-medium rounded-full text-sm px-2 py-2.5 over:bg-gray-700 <?php if($wiki['status']==="Published") {echo "bg-green-700";}else{ echo "bg-yellow-500";}  ?>"><?= $wiki['status']?></button>
                     </td>
                     <td class="px-6 py-4 text-right">
-                        <a href="deleteUser?id=<?= $user['id']?>"
+                        <a href="archiveWiki?id=<?= $wiki['id']?>"
                             class="text-white p-2 px-4 rounded bg-red-600 hover: bg-red-400">Archive</a>
                     </td>
                 </tr>

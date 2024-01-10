@@ -16,6 +16,7 @@ $router->setRoutes([
         'home' => ['UserController','home'],
         'signup' => ['UserController','signup'],
         'signin' => ['UserController','login'],
+        'logout' => ['UserController','logout'],
         'dashboard' => ['WikiController','getPending'],
         
         'categories' => ['CategoryController','getAll'],
@@ -25,6 +26,8 @@ $router->setRoutes([
         'wikis' => ['WikiController','getAll'],
         'archive' => ['WikiController','getArchive'],
         'seeMore' => ['WikiController','getwiki'],
+        'publish' => ['WikiController','publish'],
+        'archiveWiki' => ['WikiController','archive'],
         
 
         'tags' => ['TagController','getAll'],

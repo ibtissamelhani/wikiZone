@@ -77,6 +77,14 @@ class UserModel {
         }
 
 
+    public function countUsers(){
+    $sql="SELECT COUNT(*) as num_users from users";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
     }
 
 
