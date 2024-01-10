@@ -4,6 +4,7 @@ namespace app\models;
 require_once __DIR__ . '/../../vendor/autoload.php';
 use app\database\Connection;
 use app\entities\Tag;
+use PDO;
 
 class TagModel {
 
@@ -16,7 +17,7 @@ class TagModel {
     public function create(Tag $tag){
         $stmt= $this->db->prepare("INSERT INTO tags (name) 
         VALUES (:name)");
-        $stmt->bindParam(':name', $tag->getName());
+        $stmt->bindvalue(':name', $tag->getName());
         $stmt->execute();
     }
 
@@ -31,19 +32,14 @@ class TagModel {
         $stmt->execute();
     }
 
-    public function getTags(){
-        $query = $this->db->query("SELECT * from tags");
-        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-        $tags = [];
-        if(empty($rows)){
-            return [];
-        }else{
-            foreach($rows as $row){
-                $tag = new Tag($row['id'],$row['name']);
-                $tags[] = $tag;
-            }
-            return $tags;
-        }
+   
+
+    public function getTags()
+    {
+        $stmt = $this->db->prepare("SELECT * from  tags");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $result;
     }
 
     public function delete($id){

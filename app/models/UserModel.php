@@ -41,18 +41,10 @@ class UserModel {
     }
 
     public function getAllUsers(){
-        $query = $this->db->query("SELECT * from users");
+        $query = $this->db->query("SELECT u.*, r.name as role from users u
+        join roles r on r.id=u.role_id");
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-        $users = [];
-        if(empty($rows)){
-            return [];
-        }else{
-            foreach($rows as $row){
-                $user = new User($row['id'],$row['first_name'],$row['last_name'],$row['email'],$row['password'],$row['profile']);
-                $users[] = $user;
-            }
-            return $users;
-        }
+        return $rows;
     }
 
     public function delete($id){

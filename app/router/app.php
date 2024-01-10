@@ -17,15 +17,23 @@ $router->setRoutes([
         'signup' => ['UserController','signup'],
         'signin' => ['UserController','login'],
         'dashboard' => ['AdminController','dashboard'],
-        'users' => ['AdminController','users'],
+        
         'categories' => ['AdminController','categories'],
-        'tags' => ['AdminController','tags'],
         'wikis' => ['AdminController','wikis'],
+
+        'tags' => ['TagController','getAll'],
+        'deleteTag' => ['TagController','delete'],
+        'editTag' => ['TagController','getTag'],
+
+        'users' => ['UserController','getUsers'],
+        'deleteUser' => ['UserController','delete'],
 
     ],
     'POST' => [
         'register' => ['UserController','createUser'],
         'login' => ['UserController','getUserByEmail'],
+        'addTag' => ['TagController','add'],
+        'editTag' => ['TagController','getTag'],
 
     ]
 ]);

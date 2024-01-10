@@ -11,25 +11,26 @@ class TagController
 {
     public function add(){
 
-        $name=$_POST['name'];
+        $name=$this->validation($_POST['name']);
 
-        if (empty($name)) {
-            $_SESSION['error_name'] = "Name category is required";
-        } elseif (strlen($name) < 3) {
-            $_SESSION['error_name'] = "Name must be at least 3 characters";
-        } else {
-            $_SESSION['error_name'] = "";
-        }
-        if(empty($_SESSION['error_name'])){
             $tagModel = new TagModel();
             $tag = new Tag(null,$name);
             $tagModel->create($tag);
-        }
+            header("location: tags");
+
     }
+
+    function validation($input) {
+        $input = trim($input);
+        $input = stripslashes($input);
+        $input = htmlspecialchars($input);
+        return $input;
+      }
 
     public function getAll(){
         $tag= new TagModel();
         $tags= $tag->getTags();
+        require "../../views/admin/tags.php";
     }
 
     public function update(){
@@ -47,13 +48,15 @@ class TagController
         $id=$_GET["id"];
         $tagModel= new TagModel();
         $tagModel->delete($id);
+        header("location: tags");
     }
 
     public function getTag()
     {
         $id=$_GET['id'];
         $tagModel = new TagModel();
-        $tag = $tagModel->getTagById($id);
+        $tagg = $tagModel->getTagById($id);
+        header("location: tags");
     }
 
     

@@ -87,13 +87,16 @@ class UserController
     }
 
     public function delete(){
+        $id = $_GET['id'];
         $userModel = new UserModel();
         $userModel->delete($id);
+        header("location: users");
     }
 
     public function getUsers(){
         $userModel = new UserModel();
         $users = $userModel->getAllUsers();
+        require "../../views/admin/users.php";
     }
 
     public function getUserById(){
