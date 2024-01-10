@@ -36,6 +36,12 @@ class WikiController
         require "../../views/admin/dashboard.php";
     }
 
+    public function getPublished(){
+        $wiki= new WikiModel();
+        $wikis= $wiki->getAllPublished();
+        require "../../views/user/home.php";
+    }
+
     public function update(){
 
         $id=$_POST['id'];
@@ -60,6 +66,14 @@ class WikiController
         $wikiModel = new WikiModel();
         $wiki = $wikiModel->getWikiById($id);
         require "../../views/admin/wiki/details.php";
+    }
+
+    public function readwiki()
+    {
+        $id=$_GET['id'];
+        $wikiModel = new WikiModel();
+        $wiki = $wikiModel->getWikiById($id);
+        require "../../views/user/read.php";
     }
     public function publish()
     {

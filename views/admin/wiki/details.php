@@ -14,7 +14,7 @@ require_once __DIR__ . "/../../includes/navbarAdmin.php"
             <h1 class="text-center text-black text-4xl mb-4"><?= $wiki['title']?></h1>
             <div class="flex gap-4">
                 <img src="/wikizone/public/imgs/1.jpg" class="rounded-full w-14 h-14">
-                <div class="flexflex-col gap-4">
+                <div class="flex flex-col gap-4">
                     <span><?= $wiki['firstName']." ".$wiki['lastName']?></span>
                     <p><?= $wiki['date']?></p>
                 </div>

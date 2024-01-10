@@ -18,7 +18,8 @@ require_once __DIR__ . "/../includes/navbar.php"
         <?php else : ?>
         <a href="signup" class="text-md">
             <button type="button"
-                class=" text-white bg-orange-700  hover:bg-orange-600 focus:ring-4 focus:outline-none  font-medium rounded-lg text-lg px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add a new Wiki</button>
+                class=" text-white bg-orange-700  hover:bg-orange-600 focus:ring-4 focus:outline-none  font-medium rounded-lg text-lg px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                a new Wiki</button>
         </a>
         <?php endif; ?>
     </div>
@@ -60,28 +61,30 @@ require_once __DIR__ . "/../includes/navbar.php"
         </div>
     </div>
     <div class="col-span-2 px-6 py-14 flex flex-col gap-4">
-        <a href="#"
-            class="flex flex-col items-center bg-white  shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
-                    acquisitions 2021</h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
-                    acquisitions of 2021 so far, in reverse chronological order.</p>
+        <?php foreach($wikis as $wiki) {?>
+        <a href="read?id=<?= $wiki['id']?>"
+            class="flex flex-col items-center bg-neutral-100 border-b mx-auto md:flex-row md:max-w-4xl rounded-lg overflow-hidden ">
+            <div class="flex flex-col justify-between p-4 w-full md:w-2/3">
+                <h5 class="mb-4 text-3xl font-bold text-center text-gray-900 dark:text-white">
+                    <?= $wiki['title'] ?>
+                </h5>
+                <p class="text-md p-4  text-gray-500"><?= $wiki['extracted_words']?> ...</p>
+                <div class="flex items-center space-x-4">
+                    <img src="/wikizone/public/imgs/1.jpg" class="rounded-full w-10 h-10" alt="Writer Profile Image">
+                    <div>
+                        <span
+                            class="text-lg font-bold text-orange-700"><?= $wiki['firstName']." ".$wiki['lastName']?></span>
+                        <p class="text-sm text-gray-500"><?= $wiki['date']?></p>
+                    </div>
+                </div>
             </div>
-            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-                src="/wikizone/public/imgs/bird.jbg" alt="">
+            <img class="object-cover w-full h-96 md:h-auto md:w-1/3" src="/wikizone/public/imgs/1.jpg" alt="Wiki Image">
         </a>
-        <a href="#"
-            class="flex flex-col items-center bg-white  shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
-                    acquisitions 2021</h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
-                    acquisitions of 2021 so far, in reverse chronological order.</p>
-            </div>
-            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-                src="/wikizone/public/imgs/bird.jbg" alt="">
-        </a>
+
+        
+
+        <?php } ?>
+
     </div>
 </section>
 

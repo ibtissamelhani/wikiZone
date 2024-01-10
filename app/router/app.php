@@ -13,7 +13,7 @@ $router = new Router();
 $router->setRoutes([
     'GET' => [
         '' => ['UserController','home'],
-        'home' => ['UserController','home'],
+        'home' => ['WikiController','getPublished'],
         'signup' => ['UserController','signup'],
         'signin' => ['UserController','login'],
         'logout' => ['UserController','logout'],
@@ -28,6 +28,7 @@ $router->setRoutes([
         'seeMore' => ['WikiController','getwiki'],
         'publish' => ['WikiController','publish'],
         'archiveWiki' => ['WikiController','archive'],
+        'read' => ['WikiController','readwiki'],
         
 
         'tags' => ['TagController','getAll'],
