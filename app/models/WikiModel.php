@@ -43,26 +43,63 @@ class WikiModel
 
 
     public function getAllWikis(){
-        $query = $this->db->query("SELECT w.*,u.firstName as firstName, u.lastName as lastName, c.name as category from wikis w 
-        join users u on u.id = w.writer
-        join categories c on c.id = w.category_id
-        where not w.status='Archived' ");
+        $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as writer_name, categories.id as category_id, categories.name as category_name, GROUP_CONCAT(tags.name) as tags
+    FROM
+        wikis
+    LEFT JOIN
+        users ON wikis.writer = users.id
+    LEFT JOIN
+        categories ON wikis.category_id = categories.id
+    LEFT JOIN
+        wiki_tags ON wikis.id = wiki_tags.wiki_id
+    LEFT JOIN
+        tags ON wiki_tags.tag_id = tags.id
+    where not wikis.status='Archived'
+    GROUP BY
+        wikis.id;
+    ");
+
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
+
+
     public function getAllArchive(){
-        $query = $this->db->query("SELECT w.*,u.firstName as firstName, u.lastName as lastName, c.name as category from wikis w 
-        join users u on u.id = w.writer
-        join categories c on c.id = w.category_id
-        where w.status='Archived' ");
+        $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as writer_name, categories.id as category_id, categories.name as category_name, GROUP_CONCAT(tags.name) as tags
+    FROM
+        wikis
+    LEFT JOIN
+        users ON wikis.writer = users.id
+    LEFT JOIN
+        categories ON wikis.category_id = categories.id
+    LEFT JOIN
+        wiki_tags ON wikis.id = wiki_tags.wiki_id
+    LEFT JOIN
+        tags ON wiki_tags.tag_id = tags.id
+    where wikis.status='Archived' 
+    GROUP BY
+        wikis.id;
+        ");
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
+
+
     public function getAllPending(){
-        $query = $this->db->query("SELECT w.*,u.firstName as firstName, u.lastName as lastName, c.name as category from wikis w 
-        join users u on u.id = w.writer
-        join categories c on c.id = w.category_id
-        where w.status='Pending' ");
+        $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as writer_name, categories.id as category_id, categories.name as category_name, GROUP_CONCAT(tags.name) as tags
+    FROM
+        wikis
+    LEFT JOIN
+        users ON wikis.writer = users.id
+    LEFT JOIN
+        categories ON wikis.category_id = categories.id
+    LEFT JOIN
+        wiki_tags ON wikis.id = wiki_tags.wiki_id
+    LEFT JOIN
+        tags ON wiki_tags.tag_id = tags.id
+    where wikis.status='Pending'  
+    GROUP BY
+        wikis.id; ");
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
@@ -75,10 +112,18 @@ class WikiModel
     }
 
     public function getWikiById($id){
-        $query ="SELECT w.*,u.firstName as firstName, u.lastName as lastName,u.profile as profile, c.name as category from wikis w 
-        join users u on u.id = w.writer
-        join categories c on c.id = w.category_id
-        where w.id=?";
+        $query ="SELECT wikis.*, users.id as writer_id, users.firstName as writer_name, categories.id as category_id, categories.name as category_name, GROUP_CONCAT(tags.name) as tags
+        FROM
+            wikis
+        LEFT JOIN
+            users ON wikis.writer = users.id
+        LEFT JOIN
+            categories ON wikis.category_id = categories.id
+        LEFT JOIN
+            wiki_tags ON wikis.id = wiki_tags.wiki_id
+        LEFT JOIN
+            tags ON wiki_tags.tag_id = tags.id
+        where wikis.id=? ";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$id]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);

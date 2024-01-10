@@ -1,12 +1,12 @@
 <?php 
-session_start();
+// session_start(); 
 
-if(!$_SESSION['loggedIn']){
-    header("location: signin");
-}elseif($row['role_id'] !== 1){
-   echo "<script>alert(\"only admin can acces  \")</script>";
-   header("location: signin");
-}
+// if(!$_SESSION['loggedIn']){
+//     header("location: signin");
+// }elseif($row['role_id'] !== 1){
+//    echo "<script>alert(\"only admin can acces  \")</script>";
+//    header("location: signin");
+// }
 
 
 ?>
@@ -33,7 +33,6 @@ if(!$_SESSION['loggedIn']){
     * {
 
         font-family: 'Roboto Condensed', sans-serif;
-
 
     }
     </style>
@@ -119,7 +118,7 @@ if(!$_SESSION['loggedIn']){
                 </li>
 
                 <li>
-                    <a href="#"
+                    <a href="logout"
                         class="flex items-center p-2 text-orange-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <span class="material-symbols-outlined">
                             logout
