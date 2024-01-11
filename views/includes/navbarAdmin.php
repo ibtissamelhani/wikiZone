@@ -56,7 +56,7 @@
         class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 p-8 bg-neutral-200	"
         aria-label="Sidebar">
         <div class="flex flex-col gap-4 items-center justify-centre  mb-8">
-            <img src="/wikizone/public/imgs/bird.jpg" alt="user profile" class="rounded-full w-20">
+            <img src="<?=$_SESSION['image']?>" alt="user profile" class="rounded-full w-20">
             <span class="text-xl font-medium">user name</span>
         </div>
         <div class="h-full px-3 py-4 overflow-y-auto bg-neutral-200	 dark:bg-gray-800">

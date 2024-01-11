@@ -63,6 +63,10 @@ class UserController
 
                     if(password_verify($password, $row['password'])){
                             $_SESSION['userId'] = $row['id'];
+                            $_SESSION['f_name'] = $row['firstName'];
+                            $_SESSION['l_name'] = $row['lastName'];
+                            $_SESSION['email'] = $row['email'];
+                            $_SESSION['image']=$row['profile'];
                             $_SESSION['loggedIn'] = true;
                             $_SESSION['role_id'] =$row['role_id'];
 
@@ -81,9 +85,19 @@ class UserController
     
 
     public function updateUser() {
-        $user = new User($id,$first_name,$last_name,$email,$password,$phone);
+
+        $id = $_POST['id'];
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $email = $_POST['email'];
+        $profile = $_POST['profile'];
+       
+
+        $user = new User($id,$first_name,$last_name,$email,null,$profile,null);
         $userModel = new UserModel();
         $userModel->update($user);
+        $_SESSION['image'] = $profile;
+        header("location: profile");
     }
 
     public function delete(){

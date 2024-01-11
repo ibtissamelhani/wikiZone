@@ -29,6 +29,7 @@ $router->setRoutes([
         'publish' => ['WikiController','publish'],
         'archiveWiki' => ['WikiController','archive'],
         'read' => ['WikiController','readwiki'],
+        'profile' => ['WikiController','getUserWikis'],
         
 
         'tags' => ['TagController','getAll'],
@@ -37,6 +38,7 @@ $router->setRoutes([
 
         'users' => ['UserController','getUsers'],
         'deleteUser' => ['UserController','delete'],
+        
 
     ],
     'POST' => [
@@ -46,6 +48,7 @@ $router->setRoutes([
         'addTag' => ['TagController','add'],
 
         'addCat' => ['CategoryController','add'],
+        'updateUser' => ['UserController','updateUser'],
     ]
 ]);
 

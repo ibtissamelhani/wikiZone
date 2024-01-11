@@ -24,7 +24,7 @@ require_once __DIR__ . "/../includes/navbar.php"
         <?php endif; ?>
     </div>
 </section>
-<section class="grid grid-cols-3">
+<section class="grid md:grid-cols-3 grid-cols-3 grid-cols-1">
     <div class="flex flex-col gap-8 px-6 py-14  border border-r-slate-400">
         <label for="default-search"
             class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -44,20 +44,18 @@ require_once __DIR__ . "/../includes/navbar.php"
             <span class="text-lg font-semibold">Categories</span>
         </div>
         <div>
+            <?php foreach($categories as $cat) {?>
             <button type="button"
-                class="text-white bg-gray-500 hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Default</button>
-            <button type="button"
-                class="text-white bg-gray-500 hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Dark</button>
-            <button type="button"
-                class="text-white bg-gray-500 border border-gray-300 focus:outline-none hover:bg-orange-700  focus:ring-4 focus:ring-gray-500 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Light</button>
-            <button type="button"
-                class="text-white bg-gray-500 hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Green</button>
-            <button type="button"
-                class="text-white bg-gray-500 hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Red</button>
-            <button type="button"
-                class="text-white bg-gray-500 hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900">Yellow</button>
-            <button type="button"
-                class="text-white bg-gray-500 hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Purple</button>
+                class="text-white bg-gray-500 hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><?= $cat->name?></button>
+        <?php }?>
+            </div>
+        <div>
+            <span class="text-lg font-semibold">Popular Tags</span>
+        </div>
+        <div class="flex flex-col gap-4 justify-center">
+        <?php foreach($tags as $tag) {?>
+            <a href=""># <?= $tag->name?></a>
+            <?php }?>
         </div>
     </div>
     <div class="col-span-2 px-6 py-14 flex flex-col gap-4">
@@ -81,7 +79,7 @@ require_once __DIR__ . "/../includes/navbar.php"
             <img class="object-cover w-full h-96 md:h-auto md:w-1/3" src="/wikizone/public/imgs/1.jpg" alt="Wiki Image">
         </a>
 
-        
+
 
         <?php } ?>
 

@@ -3,6 +3,9 @@
 namespace app\controllers;
 require_once __DIR__ . '/../../vendor/autoload.php';
 use app\models\WikiModel;
+use app\models\CategoryModel;
+use app\models\TagModel;
+use app\models\UserModel;
 use app\entities\Wiki;
 
 session_start();
@@ -39,7 +42,20 @@ class WikiController
     public function getPublished(){
         $wiki= new WikiModel();
         $wikis= $wiki->getAllPublished();
+
+        $category= new CategoryModel();
+        $categories= $category->getCategories();
+
+        $tag= new TagModel();
+        $tags= $tag->getTags();
         require "../../views/user/home.php";
+    }
+
+    public function getUserWikis(){
+        $wiki= new WikiModel();
+        $wikis= $wiki->getUserWikis();
+
+        require "../../views/user/profile.php";
     }
 
     public function update(){

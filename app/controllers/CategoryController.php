@@ -37,20 +37,12 @@ class CategoryController
 
         $id=$_POST['id'];
         $name=$_POST['name'];
-
-        // if (empty($name)) {
-        //     $_SESSION['error_name'] = "Name category is required";
-        // } elseif (strlen($name) < 3) {
-        //     $_SESSION['error_name'] = "Name must be at least 3 characters";
-        // } else {
-        //     $_SESSION['error_name'] = "";
-        // }
         $categoryModel= new CategoryModel();
         $category = new Category($id,$name);
 
         $categoryModel->update($category);
       
-        // header('location:../category');
+  
         
     }
 
