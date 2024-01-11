@@ -16,7 +16,7 @@ require_once __DIR__ . "/../includes/navbar.php"
                 a writter</button>
         </a>
         <?php else : ?>
-        <a href="signup" class="text-md">
+        <a href="addWiki" class="text-md">
             <button type="button"
                 class=" text-white bg-orange-700  hover:bg-orange-600 focus:ring-4 focus:outline-none  font-medium rounded-lg text-lg px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
                 a new Wiki</button>

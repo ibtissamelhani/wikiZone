@@ -13,7 +13,7 @@ class Wiki
     private $author_id;
     private $category_id;
 
-    public function __construct($id,$title ,$content,$status,$photo,$author_id,$category_id,$tag_id){
+    public function __construct($id,$title ,$content,$status,$photo,$author_id,$category_id){
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
@@ -21,7 +21,7 @@ class Wiki
         $this->photo = $photo;
         $this->author_id = $author_id;
         $this->category_id = $category_id;
-        $this->tag_id = $tag_id;
+        
     }
     public function getId(){
         return $this->id;

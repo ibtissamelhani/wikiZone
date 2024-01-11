@@ -12,14 +12,40 @@ session_start();
 
 class WikiController 
 {
-    public function add(){
+    public function add()
+    {
+            $title = $_POST['title'];
+            $category = $_POST['category'];
+            $tags = $_POST['tags'] ?? [];
+            $content = $_POST['content'];
+            $userId = $_POST['userId'];
+            $status = "Pending";
+            $photo = $_FILES['photo']['name'];
+            $photoTemp = $_FILES['photo']['tmp_name'];
+            $folder = '/wikizone/public/imgs/'.$photo;
 
-       
+           
+            $wiki = new Wiki(null,$title,$content,$status,$folder,$userId,$category);
             $wikiModel = new WikiModel();
-            $wiki = new Wiki(null,$name);
-            $wikiModel->create($Wiki);
+            $wikiModel->create($wiki, $tags);
+            header("Location: profile?id=$userId");
+            
+            
         
     }
+
+    public function addWiki(){
+
+        $category= new CategoryModel();
+        $categories= $category->getCategories();
+
+        $tag= new TagModel();
+        $tags= $tag->getTags();
+
+        require "../../views/user/addWiki.php";
+
+}
+
 
     public function getAll(){
         $wiki= new WikiModel();

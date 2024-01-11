@@ -29,6 +29,11 @@ $router->setRoutes([
         'publish' => ['WikiController','publish'],
         'archiveWiki' => ['WikiController','archive'],
         'read' => ['WikiController','readwiki'],
+        'addWiki' => ['WikiController','addWiki'],
+        
+
+
+
         'profile' => ['WikiController','getUserWikis'],
         
 
@@ -49,6 +54,8 @@ $router->setRoutes([
 
         'addCat' => ['CategoryController','add'],
         'updateUser' => ['UserController','updateUser'],
+
+        'add' => ['WikiController','add'],
     ]
 ]);
 
