@@ -42,6 +42,15 @@ class TagModel {
         return $result;
     }
 
+    public function getLimitTags()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM tags LIMIT 8");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+
     public function delete($id){
         $query = "DELETE from tags where id=:id";
         $stmt = $this->db->prepare($query);

@@ -50,7 +50,7 @@ class CategoryController
         $id=$_GET["id"];
         $categoryModel= new CategoryModel();
         $categoryModel->delete($id);
-        // header('location:../category');
+        header('location: categories');
     }
 
     public function getCategory()

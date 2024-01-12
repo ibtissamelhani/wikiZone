@@ -1,7 +1,13 @@
 <?php
 
-require_once __DIR__ . "/../includes/navbarAdmin.php"
+require_once __DIR__ . "/../includes/navbarAdmin.php";
 
+if(!$_SESSION['loggedIn']){
+    header("location :signin");
+}elseif($_SESSION['role_id'] !== 1){
+   echo "<script>alert(\"only admin can acces  \")</script>";
+   header("location :signin");
+}
 ?>
 <div class="p-4 sm:ml-64">
     <div class=" flex flex-col gap-8 p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
@@ -54,7 +60,7 @@ require_once __DIR__ . "/../includes/navbarAdmin.php"
 
         </div>
         <span class="text-2xl text-center underline decoration-dotted font-bold text-yellow-500">Pending Wikis</span>
-        <table class="w-9/12 m-auto sm:rounded-md text-sm text-left rtl:text-right bg-neutral-200 dark:text-gray-400">
+        <table class=" m-auto sm:rounded-md text-sm text-left rtl:text-right bg-neutral-200 dark:text-gray-400">
             <thead
                 class="text-xs sm:rounded-md text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                 <tr>

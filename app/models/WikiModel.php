@@ -91,7 +91,7 @@ class WikiModel
 
 
     public function getAllWikis(){
-        $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category_name, GROUP_CONCAT(tags.name) as tags
+        $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
     FROM
         wikis
     LEFT JOIN
@@ -113,7 +113,7 @@ class WikiModel
 
 
     public function getAllArchive(){
-        $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category_name, GROUP_CONCAT(tags.name) as tags
+        $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
     FROM
         wikis
     LEFT JOIN
@@ -134,7 +134,7 @@ class WikiModel
 
 
     public function getAllPending(){
-        $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category_name, GROUP_CONCAT(tags.name) as tags
+        $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
     FROM
         wikis
     LEFT JOIN
@@ -153,7 +153,7 @@ class WikiModel
     }
 
     public function getAllPublished(){
-        $query = $this->db->query("SELECT wikis.* , SUBSTRING_INDEX(content, ' ', 10) AS extracted_words, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category_name, GROUP_CONCAT(tags.name) as tags
+        $query = $this->db->query("SELECT wikis.* , SUBSTRING_INDEX(content, ' ', 10) AS extracted_words, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
     FROM
         wikis
     LEFT JOIN
@@ -174,22 +174,23 @@ class WikiModel
 
     public function getUserWikis(){
         $id = $_GET['id'];
-        $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category_name, GROUP_CONCAT(tags.name) as tags
-    FROM
-        wikis
-    LEFT JOIN
-        users ON wikis.writer = users.id
-    LEFT JOIN
-        categories ON wikis.category_id = categories.id
-    LEFT JOIN
-        wiki_tags ON wikis.id = wiki_tags.wiki_id
-    LEFT JOIN
-        tags ON wiki_tags.tag_id = tags.id
-    where wikis.writer= $id  
-     ");
-        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+    
+        $stmt = $this->db->prepare("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
+            FROM wikis
+            LEFT JOIN users ON wikis.writer = users.id
+            LEFT JOIN categories ON wikis.category_id = categories.id
+            LEFT JOIN wiki_tags ON wikis.id = wiki_tags.wiki_id
+            LEFT JOIN tags ON wiki_tags.tag_id = tags.id
+            WHERE wikis.writer = :id
+            GROUP BY wikis.id");
+    
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
+    
 
 
 
@@ -217,7 +218,7 @@ class WikiModel
   }
 
     public function getWikiById($id){
-        $query ="SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category_name, GROUP_CONCAT(tags.name) as tags
+        $query ="SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
         FROM
             wikis
         LEFT JOIN

@@ -21,7 +21,7 @@ class UserModel {
         $stmt->bindValue(':lastName', $user->getLastName());
         $stmt->bindValue(':email', $user->getEmail());
         $stmt->bindValue(':password', $user->getPassword());
-        $stmt->bindValue(':profile', "profile.jpg");
+        $stmt->bindValue(':profile', "/wikizone/public/imgs/profile.jpg");
         $stmt->bindValue(':role_id', 2);
         $stmt->execute();
     }

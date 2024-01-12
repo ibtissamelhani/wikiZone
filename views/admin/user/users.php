@@ -41,7 +41,7 @@ require_once __DIR__ . "/../../includes/navbarAdmin.php"
                     <?= $user['role']?>
                     </td>
                     <td class="px-6 py-4">
-                        <img src="/wikizone/public/imgs/2.jpg" alt="user profile" class="rounded-full w-8 h-8">
+                        <img src="<?= $user['profile']?>" alt="user profile" class="rounded-full w-8 h-8">
                     </td>
                     <td class="px-6 py-4 text-right">
                         <a href="deleteUser?id=<?= $user['id']?>" class="text-white p-2 px-4 rounded bg-red-600 hover: bg-red-400">Delete</a>

@@ -73,7 +73,7 @@ class WikiController
         $categories= $category->getCategories();
 
         $tag= new TagModel();
-        $tags= $tag->getTags();
+        $tags= $tag->getLimitTags();
         require "../../views/user/home.php";
     }
 
@@ -92,14 +92,18 @@ class WikiController
         $wikiModel= new WikiModel();
         $wiki = new Wiki($id,$name);
         $wikiModel->update($wiki);
+
       
         
     }
 
     public function delete(){
         $id=$_GET["id"];
+        $userId=$_GET["userId"];
         $wikiModel= new WikiModel();
         $wikiModel->delete($id);
+        header("Location: profile?id=$userId");
+
     }
 
     public function getwiki()
@@ -122,7 +126,7 @@ class WikiController
         $id=$_GET['id'];
         $wikiModel = new WikiModel();
         $wiki = $wikiModel->publishWiki($id);
-        header("location: archive");
+        header("location: dashboard");
     }
     public function archive()
     {

@@ -20,6 +20,7 @@ $router->setRoutes([
         'dashboard' => ['WikiController','getPending'],
         
         'categories' => ['CategoryController','getAll'],
+        'deleteCat' => ['CategoryController','delete'],
         
 
 
@@ -30,6 +31,7 @@ $router->setRoutes([
         'archiveWiki' => ['WikiController','archive'],
         'read' => ['WikiController','readwiki'],
         'addWiki' => ['WikiController','addWiki'],
+        'deleteWiki' => ['WikiController','delete'],
         
 
 
