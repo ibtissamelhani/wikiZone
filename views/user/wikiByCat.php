@@ -18,9 +18,9 @@ require_once __DIR__ . "/../includes/navbar.php"
                         <?= $wiki['title']?></h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-400 "><?= $wiki['date']?></p>
-                <p
+                <!-- <p
                     class="mb-3 font-normal <?php if($wiki['status']==="Published") {echo "text-green-400";}else{ echo "text-gray-500";}  ?> text-end	">
-                    <?= $wiki['status']?></p>
+                    <?= $wiki['status']?></p> -->
 
             </div>
             

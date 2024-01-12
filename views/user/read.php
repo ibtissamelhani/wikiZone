@@ -5,7 +5,7 @@ require_once __DIR__ . "/../includes/navbar.php"
 ?>
 
 
-<section class="bg-neutral-100 py-12 px-4 md:px-6 lg:px-8 xl:px-10">
+<section class="bg-neutral-100 py-12 px-4 md:px-52 md:pt-40 ">
     <div>
         <span class="text-sm md:text-lg text-gray-500 "><?= $wiki['category']?></span>
         <h1 class="text-2xl md:text-4xl text-center text-orange-700 font-extrabold mb-2"><?= $wiki['title']?></h1>
