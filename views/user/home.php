@@ -7,7 +7,7 @@ require_once __DIR__ . "/../includes/navbar.php"
     style="background-image: url('/wikizone/public/imgs/1.jpg');">
     <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center	justify-center gap-8">
         <h1 class="text-7xl text-white">WikiZone</h1>
-        <p class="text-3xl text-white">The home for great
+        <p class="sm:text-2xl md:text-3xl text-white">The home for great
             writers and readers</p>
         <?php if(!isset($_SESSION['loggedIn'])) : ?>
         <a href="signup" class="text-md">
@@ -24,10 +24,10 @@ require_once __DIR__ . "/../includes/navbar.php"
         <?php endif; ?>
     </div>
 </section>
-<section class="grid md:grid-cols-3 grid-cols-3 grid-cols-1">
-    <div class="flex flex-col gap-8 px-6 py-14  border border-r-slate-400">
-        <label for="default-search"
-            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+
+<section class="grid md:grid-cols-3 grid-cols-1 gap-4">
+    <div class="flex flex-col gap-8 px-6 py-14 border border-r-slate-400 md:col-span-1">
+        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
         <div class="relative">
             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                 <svg class="w-4 h-4 text-gray-600 dark:text-gray-400" aria-hidden="true"
@@ -37,13 +37,13 @@ require_once __DIR__ . "/../includes/navbar.php"
                 </svg>
             </div>
             <input type="search" id="live_search"
-                class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-200	  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search..." >
+                class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search...">
         </div>
         <div>
             <span class="text-lg font-semibold">Categories</span>
         </div>
-        <div>
+        <div class="flex sm:flex-row sm:justify-start flex-wrap gap-2">
             <?php foreach($categories as $cat) {?>
             <a href="wikiByCat?id=<?= $cat->id?>">
                 <button type="button"
@@ -55,13 +55,13 @@ require_once __DIR__ . "/../includes/navbar.php"
         <div>
             <span class="text-lg font-semibold">Popular Tags</span>
         </div>
-        <div class="flex flex-col gap-4 justify-center">
+        <div class="flex md:flex-col gap-4 justify-center sm:flex-row sm:justify-start flex-wrap">
             <?php foreach($tags as $tag) {?>
             <a href=""># <?= $tag->name?></a>
             <?php }?>
         </div>
     </div>
-    <div class="wiki col-span-2 px-6 py-14 flex flex-col gap-4">
+    <div class="wiki col-span-2 px-6 py-14 flex flex-col gap-4 md:col-span-2">
         <?php foreach($wikis as $wiki) {?>
         <a href="read?id=<?= $wiki['id']?>"
             class="flex flex-col items-center bg-neutral-100 border-b mx-auto md:flex-row md:max-w-4xl rounded-lg overflow-hidden ">
@@ -81,13 +81,10 @@ require_once __DIR__ . "/../includes/navbar.php"
             </div>
             <img class="object-cover w-full h-96 md:h-auto md:w-1/3" src="/wikizone/public/imgs/1.jpg" alt="Wiki Image">
         </a>
-
-
-
         <?php } ?>
-
     </div>
 </section>
+
 
 <script>
 
