@@ -48,25 +48,20 @@ require_once __DIR__ . "/../includes/navbar.php"
 
             </div>
             <div class="relative z-0 w-full mb-5 group">
-                <label for="options" class="block text-sm font-medium text-gray-700">Select Options</label>
-                <select id="options" name="tags[]" multiple
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md" onchange="updateSelectedOptions()">
+                <label for="options" class="block mb-2 text-sm font-medium text-gray-700">Select tags</label>
+                <select
+                    class="js-example-basic-multiple p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full"
+                    name="tags[]" multiple="multiple">
                     <?php foreach($tags as $tag) {?>
-
                     <option value="<?= $tag->id?>"><?= $tag->name?></option>
                     <?php }?>
-
                 </select>
-                <div id="selectedOptions" class="pt-2 text-blue-500"></div>
+
 
                 <script>
-                function updateSelectedOptions() {
-                    var selectedOptions = document.getElementById('options').selectedOptions;
-                    var selectedOptionsTextArray = Array.from(selectedOptions).map(option => option.text);
-
-                    document.getElementById('selectedOptions').innerText = 'Selected Options: ' +
-                        selectedOptionsTextArray.join('# ');
-                }
+                $(document).ready(function() {
+                    $('.js-example-basic-multiple').select2();
+                });
                 </script>
             </div>
             <div class=" z-0 w-full mb-5 group">
@@ -74,7 +69,7 @@ require_once __DIR__ . "/../includes/navbar.php"
                 <img src="<?= $wiki['photo']?>" alt="photo">
                 <input
                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    id="file_input" name="photo"  type="file" accept="image/*">
+                    id="file_input" name="photo" type="file" accept="image/*">
 
             </div>
 
@@ -122,4 +117,5 @@ require_once __DIR__ . "/../includes/footer.php"
 
 ?>
 </body>
+
 </html>
