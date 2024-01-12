@@ -52,11 +52,12 @@ require_once __DIR__ . "/../includes/navbar.php"
                 <select
                     class="js-example-basic-multiple p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full"
                     name="tags[]" multiple="multiple">
-                    <?php foreach($tags as $tag) {?>
-                    <option value="<?= $tag->id?>"><?= $tag->name?></option>
+                    <?php 
+                     $tagsArray = explode(',', $wiki['tags']);
+                    foreach($tags as $tag) {?>
+                    <option value="<?= $tag->id?>" <?php echo in_array($tag->name, $tagsArray) ? 'selected' : ''; ?>><?= $tag->name?></option>
                     <?php }?>
                 </select>
-
 
                 <script>
                 $(document).ready(function() {
