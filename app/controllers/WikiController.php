@@ -33,6 +33,24 @@ class WikiController
             
         
     }
+    public function update(){
+
+        $id = $_POST['wikiId'];
+        $title = $_POST['title'];
+        $category = $_POST['category'];
+        $tags = $_POST['tags'] ?? [];
+        $content = $_POST['content'];
+        $userId = $_POST['userId'];
+        $photo = $_FILES['photo']['name'];
+        $photoTemp = $_FILES['photo']['tmp_name'];
+        $folder = '/wikizone/public/imgs/'.$photo;
+        
+        $wiki = new Wiki($id,$title,$content,null,$folder,$userId,$category);
+        $wikiModel = new WikiModel();
+        $wikiModel->update($wiki, $tags);
+        header("Location: profile?id=$userId");
+  
+    }
 
     public function addWiki(){
 
@@ -84,18 +102,7 @@ class WikiController
         require "../../views/user/profile.php";
     }
 
-    public function update(){
-
-        $id=$_POST['id'];
-        $name=$_POST['name'];
-        
-        $wikiModel= new WikiModel();
-        $wiki = new Wiki($id,$name);
-        $wikiModel->update($wiki);
-
-      
-        
-    }
+   
 
     public function delete(){
         $id=$_GET["id"];
@@ -112,6 +119,19 @@ class WikiController
         $wikiModel = new WikiModel();
         $wiki = $wikiModel->getWikiById($id);
         require "../../views/admin/wiki/details.php";
+    }
+
+    public function editWiki(){
+        $id=$_GET['id'];
+        $wikiModel = new WikiModel();
+        $wiki = $wikiModel->getWikiById($id);
+
+        $category= new CategoryModel();
+        $categories= $category->getCategories();
+
+        $tag= new TagModel();
+        $tags= $tag->getTags();
+        require "../../views/user/editWiki.php";
     }
 
     public function readwiki()

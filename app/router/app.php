@@ -32,6 +32,8 @@ $router->setRoutes([
         'read' => ['WikiController','readwiki'],
         'addWiki' => ['WikiController','addWiki'],
         'deleteWiki' => ['WikiController','delete'],
+        'editWiki' => ['WikiController','editWiki'],
+        
         
 
 
@@ -58,6 +60,7 @@ $router->setRoutes([
         'updateUser' => ['UserController','updateUser'],
 
         'add' => ['WikiController','add'],
+        'update' => ['WikiController','update'],
     ]
 ]);
 

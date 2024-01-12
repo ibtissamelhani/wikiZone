@@ -52,7 +52,7 @@ class WikiModel
     }
     
 
-    public function update(Wiki $wiki){
+    public function update(Wiki $wiki, array $tagIds){
         try {
             // Begin transaction
             $this->db->beginTransaction();
@@ -66,6 +66,7 @@ class WikiModel
             $stmt->bindValue(':photo', $wiki->getPhoto());
             $stmt->bindValue(':writer', $wiki->getAuthorId());
             $stmt->bindValue(':category_id', $wiki->getCategoryId());
+            $stmt->bindValue(':id', $wiki->getId());
 
             $stmt->execute();
             // delete old tags
