@@ -45,15 +45,18 @@ require_once __DIR__ . "/../includes/navbar.php"
         </div>
         <div>
             <?php foreach($categories as $cat) {?>
-            <button type="button"
-                class="text-white bg-gray-500 hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><?= $cat->name?></button>
-        <?php }?>
-            </div>
+            <a href="wikiByCat?id=<?= $cat->id?>">
+                <button type="button"
+                    class="text-white bg-gray-500 hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><?= $cat->name?></button>
+
+            </a>
+            <?php }?>
+        </div>
         <div>
             <span class="text-lg font-semibold">Popular Tags</span>
         </div>
         <div class="flex flex-col gap-4 justify-center">
-        <?php foreach($tags as $tag) {?>
+            <?php foreach($tags as $tag) {?>
             <a href=""># <?= $tag->name?></a>
             <?php }?>
         </div>

@@ -96,10 +96,18 @@ class WikiController
     }
 
     public function getUserWikis(){
+        $id=$_GET["id"];
         $wiki= new WikiModel();
-        $wikis= $wiki->getUserWikis();
+        $wikis= $wiki->getUserWikis($id);
 
         require "../../views/user/profile.php";
+    }
+
+    public function getWikisByCategory(){
+        $id=$_GET["id"];
+        $wiki= new WikiModel();
+        $wikis= $wiki->getWikisByCat($id);
+        require "../../views/user/wikiByCat.php";
     }
 
    

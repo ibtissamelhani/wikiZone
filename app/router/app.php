@@ -33,6 +33,7 @@ $router->setRoutes([
         'addWiki' => ['WikiController','addWiki'],
         'deleteWiki' => ['WikiController','delete'],
         'editWiki' => ['WikiController','editWiki'],
+        'wikiByCat' => ['WikiController','getWikisByCategory'],
         
         
 
