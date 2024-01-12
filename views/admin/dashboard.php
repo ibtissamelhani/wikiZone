@@ -1,17 +1,17 @@
 <?php
-
+if (!$_SESSION['loggedIn']) {
+    header("Location: home");
+} elseif ($_SESSION['role_id'] !== 1) {
+    header("Location: home");
+    exit(); 
+}
 require_once __DIR__ . "/../includes/navbarAdmin.php";
 
-if(!$_SESSION['loggedIn']){
-    header("location :signin");
-}elseif($_SESSION['role_id'] !== 1){
-   echo "<script>alert(\"only admin can acces  \")</script>";
-   header("location :signin");
-}
+
 ?>
 <div class="p-4 sm:ml-64">
     <div class=" flex flex-col gap-8 p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-        <div class="grid grid-cols-3 gap-4 mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-4">
 
             <a href="#"
                 class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -54,7 +54,6 @@ if(!$_SESSION['loggedIn']){
                 <h5 class="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white"><?= $num_cats?></h5>
 
             </a>
-
         </div>
         <span class="text-2xl text-center underline decoration-dotted font-bold text-yellow-500">Pending Wikis</span>
         <table class=" m-auto sm:rounded-md text-sm text-left rtl:text-right bg-neutral-200 dark:text-gray-400">
@@ -120,3 +119,7 @@ if(!$_SESSION['loggedIn']){
 
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</body>
+
+</html>

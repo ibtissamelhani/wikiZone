@@ -1,5 +1,10 @@
 <?php
-
+if (!$_SESSION['loggedIn']) {
+    header("Location: home");
+} elseif ($_SESSION['role_id'] !== 2) {
+    header("Location: home");
+    exit(); 
+}
 require_once __DIR__ . "/../includes/navbar.php"
 
 ?>
