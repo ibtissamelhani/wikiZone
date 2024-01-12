@@ -143,8 +143,6 @@ function generateHTML(wiki) {
 require_once __DIR__ . "/../includes/footer.php"
 
 ?>
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 </html>

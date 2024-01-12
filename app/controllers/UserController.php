@@ -80,7 +80,7 @@ class UserController
                         header("location: signin");
                     }
             }else {
-                $_SESSION['message'] = "email or password incorrect";
+                $_SESSION['message'] = "email incorrect";
                 header("location: signin");
             }
         
