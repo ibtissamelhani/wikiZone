@@ -82,6 +82,7 @@ class UserModel {
     $stmt = $this->db->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['num_users'];
     }
 
 

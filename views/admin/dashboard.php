@@ -22,8 +22,7 @@ if(!$_SESSION['loggedIn']){
                     <p class="font-normal text-gray-700 dark:text-gray-400">Number of writers : </p>
                 </div>
 
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
-                    acquisitions 2021</h5>
+                <h5 class=" text-3xl font-bold tracking-tight text-center text-gray-900 dark:text-white"><?= $num_users?></h5>
 
             </a>
 
@@ -38,8 +37,7 @@ if(!$_SESSION['loggedIn']){
                     <p class="font-normal text-gray-700 dark:text-gray-400">Number of Wikis : </p>
                 </div>
 
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
-                    acquisitions 2021</h5>
+                <h5 class="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white"><?= $num_wikis?></h5>
 
             </a>
 
@@ -53,8 +51,7 @@ if(!$_SESSION['loggedIn']){
                     <p class="font-normal text-gray-700 dark:text-gray-400">Number of categories : </p>
                 </div>
 
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
-                    acquisitions 2021</h5>
+                <h5 class="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white"><?= $num_cats?></h5>
 
             </a>
 

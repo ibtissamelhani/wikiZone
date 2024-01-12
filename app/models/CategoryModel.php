@@ -53,6 +53,14 @@ class CategoryModel {
         return $row;
     }
 
+    public function countCategories(){
+        $sql="SELECT COUNT(*) as num_cats from categories";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['num_cats'];
+        }
+
 
     }
 

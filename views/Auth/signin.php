@@ -27,6 +27,7 @@
                 <div class="text-center mb-10 ">
                     <h1 class="font-bold text-3xl text-gray-900">LOGIN</h1>
                     <p>Enter your information to login</p>
+                    <span class="text-xs text-red-500"><?php if(!empty($_SESSION['message'])) {echo $_SESSION['message']; $_SESSION['message']="";}?></span>
                 </div>
                 <form method="post" action="login">
                     

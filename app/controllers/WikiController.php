@@ -80,6 +80,14 @@ class WikiController
     public function getPending(){
         $wiki= new WikiModel();
         $wikis= $wiki->getAllPending();
+        $num_wikis = $wiki->countWiki();
+
+        $user= new UserModel();
+        $num_users= $user->countUsers();
+
+        $cat= new CategoryModel();
+        $num_cats= $cat->countCategories();
+       
         require "../../views/admin/dashboard.php";
     }
 

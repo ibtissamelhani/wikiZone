@@ -75,9 +75,12 @@ class UserController
                             }else{
                                 header("location: home");
                             } 
+                    }else {
+                        $_SESSION['message'] = "email or password incorrect";
+                        header("location: signin");
                     }
             }else {
-                $_SESSION['message'] = "this email doesn't existe";
+                $_SESSION['message'] = "email or password incorrect";
                 header("location: signin");
             }
         
