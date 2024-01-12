@@ -164,6 +164,14 @@ class WikiController
         header("location: archive");
     }
 
+
+    public function search(){
+        $input = $_GET['input'];
+        $wikiModel = new WikiModel();
+        $wikis = $wikiModel->searchWiki($input);
+        echo json_encode($wikis);
+    }
+
     
 
 }

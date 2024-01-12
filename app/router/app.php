@@ -34,6 +34,7 @@ $router->setRoutes([
         'deleteWiki' => ['WikiController','delete'],
         'editWiki' => ['WikiController','editWiki'],
         'wikiByCat' => ['WikiController','getWikisByCategory'],
+        'search' => ['WikiController','search'],
         
         
 

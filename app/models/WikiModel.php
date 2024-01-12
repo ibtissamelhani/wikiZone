@@ -95,13 +95,13 @@ class WikiModel
         $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
     FROM
         wikis
-    LEFT JOIN
+    JOIN
         users ON wikis.writer = users.id
-    LEFT JOIN
+    JOIN
         categories ON wikis.category_id = categories.id
-    LEFT JOIN
+    JOIN
         wiki_tags ON wikis.id = wiki_tags.wiki_id
-    LEFT JOIN
+    JOIN
         tags ON wiki_tags.tag_id = tags.id
     where not wikis.status='Archived'
     GROUP BY
@@ -117,13 +117,13 @@ class WikiModel
         $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
     FROM
         wikis
-    LEFT JOIN
+    JOIN
         users ON wikis.writer = users.id
-    LEFT JOIN
+    JOIN
         categories ON wikis.category_id = categories.id
-    LEFT JOIN
+    JOIN
         wiki_tags ON wikis.id = wiki_tags.wiki_id
-    LEFT JOIN
+    JOIN
         tags ON wiki_tags.tag_id = tags.id
     where wikis.status='Archived' 
     GROUP BY
@@ -138,13 +138,13 @@ class WikiModel
         $query = $this->db->query("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
     FROM
         wikis
-    LEFT JOIN
+    JOIN
         users ON wikis.writer = users.id
-    LEFT JOIN
+    JOIN
         categories ON wikis.category_id = categories.id
-    LEFT JOIN
+    JOIN
         wiki_tags ON wikis.id = wiki_tags.wiki_id
-    LEFT JOIN
+    JOIN
         tags ON wiki_tags.tag_id = tags.id
     where wikis.status='Pending'  
     GROUP BY
@@ -157,13 +157,13 @@ class WikiModel
         $query = $this->db->query("SELECT wikis.* , SUBSTRING_INDEX(content, ' ', 10) AS extracted_words, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
     FROM
         wikis
-    LEFT JOIN
+    JOIN
         users ON wikis.writer = users.id
-    LEFT JOIN
+    JOIN
         categories ON wikis.category_id = categories.id
-    LEFT JOIN
+    JOIN
         wiki_tags ON wikis.id = wiki_tags.wiki_id
-    LEFT JOIN
+    JOIN
         tags ON wiki_tags.tag_id = tags.id
     where wikis.status='Published'  
     GROUP BY
@@ -177,10 +177,10 @@ class WikiModel
 
         $stmt = $this->db->prepare("SELECT wikis.*, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
             FROM wikis
-            LEFT JOIN users ON wikis.writer = users.id
-            LEFT JOIN categories ON wikis.category_id = categories.id
-            LEFT JOIN wiki_tags ON wikis.id = wiki_tags.wiki_id
-            LEFT JOIN tags ON wiki_tags.tag_id = tags.id
+            JOIN users ON wikis.writer = users.id
+            JOIN categories ON wikis.category_id = categories.id
+            JOIN wiki_tags ON wikis.id = wiki_tags.wiki_id
+            JOIN tags ON wiki_tags.tag_id = tags.id
             WHERE wikis.writer = :id
             GROUP BY wikis.id");
     
@@ -195,10 +195,10 @@ class WikiModel
 
         $stmt = $this->db->prepare("SELECT wikis.*, SUBSTRING_INDEX(content, ' ', 10) AS extracted_words, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
             FROM wikis
-            LEFT JOIN users ON wikis.writer = users.id
-            LEFT JOIN categories ON wikis.category_id = categories.id
-            LEFT JOIN wiki_tags ON wikis.id = wiki_tags.wiki_id
-            LEFT JOIN tags ON wiki_tags.tag_id = tags.id
+            JOIN users ON wikis.writer = users.id
+            JOIN categories ON wikis.category_id = categories.id
+            JOIN wiki_tags ON wikis.id = wiki_tags.wiki_id
+            JOIN tags ON wiki_tags.tag_id = tags.id
             WHERE wikis.category_id = :id
             GROUP BY wikis.id");
     
@@ -239,13 +239,13 @@ class WikiModel
         $query ="SELECT wikis.*, users.id as writer_id, users.firstName as firstName,users.profile as profile, users.lastName as lastName, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
         FROM
             wikis
-        LEFT JOIN
+        JOIN
             users ON wikis.writer = users.id
-        LEFT JOIN
+        JOIN
             categories ON wikis.category_id = categories.id
-        LEFT JOIN
+        JOIN
             wiki_tags ON wikis.id = wiki_tags.wiki_id
-        LEFT JOIN
+        JOIN
             tags ON wiki_tags.tag_id = tags.id
         where wikis.id=? ";
         $stmt = $this->db->prepare($query);
@@ -276,4 +276,26 @@ class WikiModel
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         }
+
+    public function searchWiki($key){
+        $stmt = $this->db->prepare("SELECT wikis.* , SUBSTRING_INDEX(content, ' ', 10) AS extracted_words, users.id as writer_id, users.firstName as firstName, users.lastName as lastName, users.profile as profile, categories.id as category_id, categories.name as category, GROUP_CONCAT(tags.name) as tags
+        FROM
+            wikis
+        JOIN
+            users ON wikis.writer = users.id
+        JOIN
+            categories ON wikis.category_id = categories.id
+        JOIN
+            wiki_tags ON wikis.id = wiki_tags.wiki_id
+        JOIN
+            tags ON wiki_tags.tag_id = tags.id
+        WHERE wikis.status='Published' AND  wikis.title LIKE ?
+        GROUP BY
+        wikis.id; "); 
+
+        $stmt->execute(["%$key%"]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    }
 }
